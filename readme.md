@@ -14,7 +14,7 @@
 7. php artisan serve (and the project will run on localhost:8000 or depends on your port)
 8. Make sure to start your apache and mysql (XAMPP)
 
-*I am using bootstrap JS and CSS with online(CDN) url, make sure the internet is connected. :)
+**I am using bootstrap JS and CSS with online(CDN) url, make sure the internet is connected. :)
 
 # Laravel PHP Framework
 
