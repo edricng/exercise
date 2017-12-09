@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('content')
+    @if(session()->has('messages'))
+        @include('sweet::alert')
+    @endif
     <div class="col-md-12">
         <h3 class="text-center">My Cart
             <a class="btn btn-info" href="/">Back to Home</a>

@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('content')
+    @if(session()->has('messages'))
+        @include('sweet::alert')
+    @endif
     <div class="col-md-12">
         <h3 class="text-center">#1 Number</h3>
         <form method="POST" id="data" name="addNumber" role="form" action="{{ url('/number') }}" enctype="multipart/form-data" autocomplete="off">
@@ -19,11 +22,6 @@
 
     <div class="col-md-12">
         <h3 class="text-center">#2 Cart <a class="btn btn-info btn-cart pull-right" href="/view-cart">Show Cart</a></h3>
-        @if(session()->has('product_message'))
-            <div class="alert alert-success">
-                {{ session()->get('product_message') }}
-            </div>
-        @endif
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
@@ -81,11 +79,6 @@
 
     <div class="col-md-12 margin-bottom-20">
         <h3 class="text-center">#3 Weight Logging App</h3>
-        @if(session()->has('weight_message'))
-            <div class="alert alert-success">
-                {{ session()->get('weight_message') }}
-            </div>
-        @endif
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
@@ -106,7 +99,7 @@
                         <td>{{ $weight->max - $weight->min}}</td>
                         <td>
                             <a class="btn btn-warning" href="{{url('/weight/'.$weight->uuid)}}">View/Edit</a>
-                            <a class="btn btn-danger" href="{{url('/delete-weight/'.$weight->uuid)}}">Delete</a>
+                            <a class="btn btn-danger button-delete" data-id="{{$weight->uuid}}" href="{{url('/delete-weight/'.$weight->uuid)}}">Delete</a>
                         </td>
                     </tr>
                 @empty

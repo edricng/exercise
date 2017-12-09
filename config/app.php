@@ -156,6 +156,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+
     ],
 
     /*
@@ -203,6 +205,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Uuid' => Webpatser\Uuid\Uuid::class,
+
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

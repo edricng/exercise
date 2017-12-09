@@ -7,8 +7,7 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label>Date</label>
-                <input type="date" class="form-control" id="date" name="date" placeholder="Input Date"
-                value="{{$weight->date}}">
+                <input type="text" class="form-control" id="datepicker" name="date" placeholder="Input Date" value="{{$weight->date}}">
                 @if ($errors->has('date'))
                     <font color="red">
                         <strong>{{ $errors->first('date') }}</strong>

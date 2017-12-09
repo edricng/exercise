@@ -18,7 +18,7 @@ Route::get('/', 'IndexController@index');
 Route::get('/weight/{uuid}', 'WeightController@show');
 Route::post('/weight', 'WeightController@store');
 Route::post('/update-weight/{uuid}', 'WeightController@update');
-Route::get('/delete-weight/{uuid}', 'WeightController@delete');
+Route::post('/delete-weight', 'WeightController@delete');
 
 
 Route::get('/add-product', function () {

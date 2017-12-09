@@ -24,7 +24,7 @@ class ProductController extends Controller
 
         Product::create($input);
 
-        return redirect('/')->with('product_message',"Success to add product");
+        return redirect('/')->with('messages',alert()->success('Product has been added'));
     }
 
     public function cart(Request $request)
@@ -43,7 +43,7 @@ class ProductController extends Controller
 			setcookie($uuid, $quantity_cart);
     	}
 
-        return redirect('/')->with('product_message',"Success add to cart");
+        return redirect('/')->with('messages',alert()->success($quantity.' '.$product->product_name.' has been added to your cart'));
     }
 
     public function showCart()
@@ -62,14 +62,23 @@ class ProductController extends Controller
     		}
     	}
 
-    	return view('cart', ['carts' => $carts]);
+        $remove_message = session('remove_message');
+        if ($remove_message) {
+            session()->flush();
+            return redirect('/view-cart')->with('messages',alert()->success($remove_message));
+        }else{
+            return view('cart', ['carts' => $carts]);
+        }
     }
 
     public function removeItem(Request $request, $uuid)
     {
         if(isset($_COOKIE[$uuid])){
+            $product    = Product::where('uuid',$uuid)
+                        ->first();
             unset($_COOKIE[$uuid]);
             setcookie($uuid, null, -1, '/');
+            session(['remove_message' => $product->product_name.' has been removed from your cart']);
             return $this->showCart();
         }
     }

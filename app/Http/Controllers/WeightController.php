@@ -24,7 +24,7 @@ class WeightController extends Controller
 
         Weight::create($input);
 
-        return redirect('/')->with('weight_message',"Success to add weight");;
+        return redirect('/')->with('messages',alert()->success('Weight has been added'));
     }
 
     public function show(Request $request, $uuid)
@@ -47,11 +47,12 @@ class WeightController extends Controller
 	        $weight->save();
     	}
 
-    	return redirect('/')->with('weight_message',"Success to update weight");;
+    	return redirect('/')->with('messages',alert()->success('Weight has been updated!'));
     }
 
-    public function delete(Request $request, $uuid)
+    public function delete(Request $request)
     {
+        $uuid = $request->input('uuid');
     	$weight = Weight::where('uuid',$uuid)
     			->first();
     			
@@ -59,6 +60,6 @@ class WeightController extends Controller
 	        $weight->delete();
     	}
 
-    	return redirect('/');
+    	return redirect('/')->with('messages',alert()->success('Weight has been deleted!'));
     }
 }
