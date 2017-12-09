@@ -1,3 +1,21 @@
+# Please read and follow this step (after clone)
+1. Create new file .env at the same level as folder app,resources etc (Copy from .env.example)
+2. Create database localhost (mysql) with name [as you wish] and edit on your .env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=[as you wish]
+    DB_USERNAME=root (your mysql localhost username)
+    DB_PASSWORD=(your mysql localhost password)
+3.Open project on git bash
+4. composer install
+5. php artisan migrate
+6. php artisan db:seed --class=ProductsTableSeeder
+7. php artisan serve (and the project will run on localhost:8000 or depends on your port)
+8. Make sure to start your apache and mysql (XAMPP)
+
+**I am using bootstrap JS and CSS with online(CDN) url, make sure the internet is connected. :)
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
