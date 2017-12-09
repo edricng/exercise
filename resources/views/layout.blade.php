@@ -15,6 +15,7 @@
     </head>
     <body>
         <div class="container">
+            <img class="img-responsive image-center" src="images/sirclo.png" width="200">
             <div class="content">
                 @yield('content')
             </div>
@@ -39,7 +40,6 @@
         $(document).on('click', '.button-delete', function (e) {
             e.preventDefault();
             var uuid = $(this).data('id');
-            console.log(uuid)
             swal({
                     title: "Are you sure!",
                     type: "error",

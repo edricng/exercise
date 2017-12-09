@@ -10,3 +10,8 @@
 .margin-bottom-20{
 	margin-bottom: 20px;
 }
+
+.image-center{
+	display: block;
+	margin: 0 auto;
+}
